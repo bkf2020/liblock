@@ -16,5 +16,8 @@
    "*://*.soundcloud.com/*",
    "*://*.wikipedia.org/*"
  ],
+ "action": {
+   "default_popup": "index.html"
+ },
  "manifest_version": 3
 }

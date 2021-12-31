@@ -14,3 +14,8 @@ The license is CC-BY-SA-4.0 and it is allowed to license that under GPL.
 # goals
 Since Manifest v2 is being phased out, the plan is to make an extension
 the user generates...
+
+- [Allow users to update rules with UpdateRuleOptions](https://developer.chrome.com/docs/extensions/reference/declarativeNetRequest/#type-UpdateRuleOptions)
+- Use storage API to allow users to store rules
+- Add a background task that checks if the time the user set has passed
+- Allow whitelisting websites?
