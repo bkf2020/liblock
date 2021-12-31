@@ -12,9 +12,7 @@
     "declarativeNetRequest"
  ],
  "host_permissions": [
-   "*://*.cnn.com/*",
-   "*://*.soundcloud.com/*",
-   "*://*.wikipedia.org/*"
+   "*://*/*"
  ],
  "action": {
    "default_popup": "index.html"
