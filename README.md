@@ -17,4 +17,9 @@ The license is CC-BY-SA-4.0 and it is allowed to license that under GPL.
 - Use storage API to allow users to store rules
 - Add a background task that checks if the time the user set has passed
 - Allow whitelisting websites?
+	- Tried whitelisting a youtube playlist, but that allows the user to browse YouTube
+		- Use the `tab` api?
 - Use a table to display `setrules.html`
+- When a user presses start, close all blocked websites with the `tab` api
+- Allow users to press enter to enter a new rule
+- clear dynamic rules when time expires
