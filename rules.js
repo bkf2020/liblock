@@ -74,9 +74,29 @@ function startBlocking() {
 	for(var i = 0; i < rules.length; i++) {
 		var r = rules[i];
 		if(r !== "") {
-			rules_json.push({"id": curr_id, "priority": 1,
+			rules_json.push({
+				"id": curr_id,
+				"priority": 1,
 				"action": { "type": "redirect", "redirect": { "extensionPath": "/blocked.html" } },
-				    "condition": { "urlFilter": r, "resourceTypes": ["main_frame"] }});
+				"condition": {
+					"urlFilter": r,
+					"resourceTypes": [
+						"main_frame",
+						"sub_frame",
+						"stylesheet",
+						"script",
+						"image",
+						"font",
+						"object",
+						"xmlhttprequest",
+						"ping",
+						"csp_report",
+						"media",
+						"websocket",
+						"other"
+					]
+				}
+			});
 			curr_id++;
 		}
 	}
