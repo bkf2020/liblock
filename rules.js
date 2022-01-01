@@ -60,7 +60,32 @@ function addRule() {
 	}
 	document.getElementById('new-rule').value = "";
 }
+
+function startBlocking() {
+	// temp
+	var rules_id = [];
+	for(var i = 1; i <= 10000; i++) {
+		rules_id.push(i);
+	}
+	chrome.declarativeNetRequest.updateDynamicRules({"removeRuleIds": rules_id});
+
+	var rules_json = [];
+	var curr_id = 1;
+	for(var i = 0; i < rules.length; i++) {
+		var r = rules[i];
+		if(r !== "") {
+			rules_json.push({"id": curr_id, "priority": 1,
+				"action": { "type": "redirect", "redirect": { "extensionPath": "/blocked.html" } },
+				    "condition": { "urlFilter": r, "resourceTypes": ["main_frame"] }});
+			curr_id++;
+		}
+	}
+	chrome.declarativeNetRequest.updateDynamicRules({"addRules": rules_json});
+}
+
 document.addEventListener('DOMContentLoaded', function () {
 	document.getElementById('add-rule')
 		.addEventListener('click', addRule);
+	document.getElementById('start-blocking')
+		.addEventListener('click', startBlocking);
 });
