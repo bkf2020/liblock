@@ -13,14 +13,15 @@ The license is CC-BY-SA-4.0 and it is allowed to license that under GPL.
 
 # goals
 
--[x] [Allow users to update rules with UpdateRuleOptions](https://developer.chrome.com/docs/extensions/reference/declarativeNetRequest/#type-UpdateRuleOptions)
--[ ] Use storage API to allow users to store rules
--[ ] Add a background task that checks if the time the user set has passed
--[ ] Allow whitelisting websites?
+- [x] [Allow users to update rules with UpdateRuleOptions](https://developer.chrome.com/docs/extensions/reference/declarativeNetRequest/#type-UpdateRuleOptions)
+- [ ] Use storage API to allow users to store rules
+- [ ] Add a background task that checks if the time the user set has passed
+- [ ] Allow whitelisting websites?
 	- Tried whitelisting a youtube playlist, but that allows the user to browse YouTube
 		- Use the `tab` api?
--[ ] Use a table to display `setrules.html`
--[x] When a user presses start, close all blocked websites with the `tab` api
--[ ] Allow users to press enter to enter a new rule
--[ ] clear dynamic rules when time expires
--[x] Maybe query tabs instead of using `declarativeNetRequest` and see which tabs need to be closed/redirected
+- [ ] Use a table to display `setrules.html`
+- [x] When a user presses start, close all blocked websites with the `tab` api
+- [ ] Allow users to press enter to enter a new rule
+- [ ] clear dynamic rules when time expires
+- [ ] Maybe query tabs instead of using `declarativeNetRequest` and see which tabs need to be closed/redirected
+- [ ] Use a better theme for the extension
