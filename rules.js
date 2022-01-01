@@ -21,7 +21,6 @@ var ptr = 0;
 // this evt is based off https://stackoverflow.com/a/11986895, by Zaloz
 // license if CC BY SA 4.0, so it can be GPL licensed
 function deleteRule(evt) {
-	console.log(evt.currentTarget.ptr);
 	var which = evt.currentTarget.ptr;
 	rules[which] = "";
 	document.getElementById('rule' + which.toString() + 'text').remove();
