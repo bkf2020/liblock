@@ -101,6 +101,24 @@ function startBlocking() {
 		}
 	}
 	chrome.declarativeNetRequest.updateDynamicRules({"addRules": rules_json});
+
+	// close tabs that are on the blocklist
+	var rules_url_pattern = [];
+	for(var i = 0; i < rules.length; i++) {
+		var r = rules[i];
+		if(r !== "") {
+			// format (e.g. for google.com): *://*.google.com/*
+			rules_url_pattern.push("*://*." + r + "/*");
+		}
+	}
+	if(rules_url_pattern.length > 0) {
+		chrome.tabs.query({"url" : rules_url_pattern}).then(function(result) {
+			for(var i = 0; i < result.length; i++) {
+				var tab = result[i];
+				chrome.tabs.remove(tab.id);
+			}
+		});
+	}
 }
 
 document.addEventListener('DOMContentLoaded', function () {

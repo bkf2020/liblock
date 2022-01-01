@@ -2,7 +2,8 @@
 	"name": "liblock",
 	"version": "1",
 	"permissions": [
-		"declarativeNetRequest"
+		"declarativeNetRequest",
+		"tabs"
 	],
 	"host_permissions": [
 		"*://*/*"
