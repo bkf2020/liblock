@@ -150,6 +150,15 @@ function startBlocking() {
 	return true;
 }
 
+// make sure user wants to close out of setrules.html because changes WILL NOT BE SAVED unless a block session
+// is finished
+// https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event
+// https://github.com/gorhill/uBlock/blob/5bea149e8fd78f4da3585aa2e91863306e77b491/src/js/dashboard.js#L144
+window.addEventListener('beforeunload', () => {
+	event.preventDefault();
+	event.returnValue = '';
+});
+
 document.addEventListener('DOMContentLoaded', function () {
 	document.getElementById('add-rule')
 		.addEventListener('click', addRule);
