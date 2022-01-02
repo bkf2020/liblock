@@ -119,6 +119,10 @@ function startBlocking() {
 			}
 		});
 	}
+
+	chrome.storage.sync.set({blocking: true});
+	document.getElementById("blocking").style = "";
+	document.getElementById("notBlocking").style = "display: none;";
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -126,4 +130,14 @@ document.addEventListener('DOMContentLoaded', function () {
 		.addEventListener('click', addRule);
 	document.getElementById('start-blocking')
 		.addEventListener('click', startBlocking);
+});
+
+chrome.storage.sync.get(['blocking'], function(result) {
+	if(result.blocking) {
+		document.getElementById("blocking").style = "";
+		document.getElementById("notBlocking").style = "display: none;";
+	} else {
+		document.getElementById("blocking").style = "display: none;";
+		document.getElementById("notBlocking").style = "";
+	}
 });

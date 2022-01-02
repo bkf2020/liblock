@@ -3,7 +3,8 @@
 	"version": "1",
 	"permissions": [
 		"declarativeNetRequest",
-		"tabs"
+		"tabs",
+		"storage"
 	],
 	"host_permissions": [
 		"*://*/*"
