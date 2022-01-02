@@ -1,9 +1,5 @@
 # installing the extension
 
-# Download from the chrome web store
-
-Link coming soon
-
 # Install manually
 
 1. Open the extensions page by typing `chrome://extensions`.

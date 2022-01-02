@@ -28,8 +28,6 @@ and is available under the GNU public license, version 3:
 - [Gitlab](https://gitlab.com/bkf2020/liblock)
 - [Codeberg](https://codeberg.org/bkf2020/liblock)
 
-You can always install manually (see `INSTALL.md`) if you do not trust the versions from the chrome web store.
-
 # license
 Some code was taken from https://developer.chrome.com/docs/extensions/reference/declarativeNetRequest/
 The license is CC-BY-SA-4.0 and it is allowed to license that under GPL.
