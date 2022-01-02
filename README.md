@@ -7,6 +7,29 @@ libre website blocker to help you stay focused. set times you want to prevent ac
 - [Gitlab](https://gitlab.com/bkf2020/liblock)
 - [Codeberg](https://codeberg.org/bkf2020/liblock)
 
+# getting started
+1. install the extension (see `INSTALL.md` for more details).
+2. right click on the extension to open the options page
+	a. or click on the extension icon, and press the button to open the options page
+3. set your rules by following the instructions on the options page
+4. set a time to start blocking (scroll down on the options page)
+5. press "start blocking" to start blocking!
+
+# privacy
+This extension DOES NOT collect ANY user data. This extension needs to "read your browsing history"
+because it when you start blocking, it scans your tabs and makes sure any tabs with blocked websites
+are blocked. The extension prevents you from opening a website by using the declaractiveNetRequest
+( https://developer.chrome.com/docs/extensions/reference/declarativeNetRequest/ ) API, but this API
+cannot block websites you have already opened!
+
+The extension DOES NOT send any DATA about you to any server, and all code is available online
+and is available under the GNU public license, version 3:
+- [Github](https://github.com/bkf2020/liblock)
+- [Gitlab](https://gitlab.com/bkf2020/liblock)
+- [Codeberg](https://codeberg.org/bkf2020/liblock)
+
+You can always install manually (see `INSTALL.md`) if you do not trust the versions from the chrome web store.
+
 # license
 Some code was taken from https://developer.chrome.com/docs/extensions/reference/declarativeNetRequest/
 The license is CC-BY-SA-4.0 and it is allowed to license that under GPL.
@@ -28,10 +51,10 @@ The files in the folder `icons` are also under CC0, since it is just the origina
 - [ ] Allow users to press enter to enter a new rule
 - [x] clear dynamic rules when time expires
 - [ ] Maybe query tabs instead of using `declarativeNetRequest` and see which tabs need to be closed/redirected
-- [ ] Use a better theme for the extension
+- [x] Use a better theme for the extension
 - [ ] Clean up the code
 	- [ ] Use better names for files
 	- [ ] Use simpler logic if possible
 - [ ] Branding: create an icon, description
-- [ ] Privacy: tell users why the extension needs certain permissions
-- [ ] Show users which websites they block on `setrules.html`
+- [x] Privacy: tell users why the extension needs certain permissions
+- [x] Show users which websites they block on `setrules.html`
