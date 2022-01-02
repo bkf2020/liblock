@@ -13,6 +13,8 @@ The license is CC-BY-SA-4.0 and it is allowed to license that under GPL.
 
 The file `icon.jpg` is under CC0 and is from [public domain pictures](https://www.publicdomainpictures.net/en/view-image.php?image=312428&picture=penguin-print).
 
+The files in the folder `icons` are also under CC0, since it is just the original picture resized.
+
 # goals
 
 - [x] [Allow users to update rules with UpdateRuleOptions](https://developer.chrome.com/docs/extensions/reference/declarativeNetRequest/#type-UpdateRuleOptions)
