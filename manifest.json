@@ -11,5 +11,9 @@
 	"action": {
 		"default_popup": "index.html"
 	},
+	"options_ui": {
+		"page": "setrules.html",
+		"open_in_tab": true
+	},
 	"manifest_version": 3
 }
