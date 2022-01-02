@@ -73,13 +73,6 @@ function startBlocking() {
 		return false;
 	}
 
-	// temp
-	var rules_id = [];
-	for(var i = 1; i <= 10000; i++) {
-		rules_id.push(i);
-	}
-	chrome.declarativeNetRequest.updateDynamicRules({"removeRuleIds": rules_id});
-
 	var rules_json = [];
 	var curr_id = 1;
 	for(var i = 0; i < rules.length; i++) {

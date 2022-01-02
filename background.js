@@ -6,4 +6,14 @@ chrome.alarms.onAlarm.addListener(function() {
 			chrome.tabs.reload(tab.id);
 		}
 	});
+	// delete all dynamic rules in browser
+	chrome.storage.sync.get(['userRules'], function(result) {
+		if(result.userRules === undefined) return false;
+		var rules_id = [];
+		for(var i = 1; i <= result.userRules.length; i++) {
+			rules_id.push(i);
+		}
+		chrome.declarativeNetRequest.updateDynamicRules({"removeRuleIds": rules_id});
+		return true;
+	});
 });
