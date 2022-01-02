@@ -18,32 +18,40 @@
 <!DOCTYPE html>
 <html>
 	<body style="width: 500px;">
-		<h2>Current rules</h2>
-		<div id="rules">
-			<label style="display: none;" id="rule0text"></label>
-			<button style="display: none;" id="rule0btn">Delete Rule</button>
-			<br id="rule0br"/>
+		<div id="notBlocking">
+			<h2>Current rules</h2>
+			<div id="rules">
+				<label style="display: none;" id="rule0text"></label>
+				<button style="display: none;" id="rule0btn">Delete Rule</button>
+				<br id="rule0br"/>
+			</div>
+			<label for="new-rule">Type your new rule:</label>
+			<input type="text" id="new-rule" name="new-rule" value="">
+			<button id="add-rule">Add the new rule!</button>
+			<script src="rules.js"></script>
+			<p>
+				<b>Note:</b> Please type rules in the format
+				<code>website.com</code>. Do NOT include <code>www</code>
+				or <code>/</code>!
+			</p>
+			<p>Examples:</p>
+				<ul>
+				<li>type <code>youtube.com</code> not <code>www.youtube.com</code></li>
+				<li>type <code>google.com</code> not <code>https://www.google.com/</code></li>
+			</ul>
+
+			<h2>Start blocking</h2>
+			<label for="rules-time">Choose a time to stop the blocking: </label>
+			<input id="rules-time" type="time" name="rules-time" value="00:00"><br/>
+			<button id="start-blocking">Start blocking</button>
 		</div>
-		<label for="new-rule">Type your new rule:</label>
-		<input type="text" id="new-rule" name="new-rule" value="">
-		<button id="add-rule">Add the new rule!</button>
-		<script src="rules.js"></script>
-		<p>
-			<b>Note:</b> Please type rules in the format
-			<code>website.com</code>. Do NOT include <code>www</code>
-			or <code>/</code>!
-		</p>
-		<p>Examples:</p>
-		<ul>
-			<li>type <code>youtube.com</code> not <code>www.youtube.com</code></li>
-			<li>type <code>google.com</code> not <code>https://www.google.com/</code></li>
-		</ul>
 
-
-		<h2>Start blocking</h2>
-		<label for="rules-time">Choose a time to stop the blocking: </label>
-		<input id="rules-time" type="time" name="rules-time" value="00:00"><br/>
-		<button id="start-blocking">Start blocking</button>
+		<div id="blocking" style="display: none;">
+			<h2>You are currently blocking these websites!</h2>
+			<div id="blockedWebsites">
+			</div>
+			<h2 id="blockTime">You are blocking until</h2>
+		</div>
 
 		<h2>About</h2>
 		<p>
