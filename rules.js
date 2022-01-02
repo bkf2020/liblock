@@ -155,8 +155,10 @@ function startBlocking() {
 // https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event
 // https://github.com/gorhill/uBlock/blob/5bea149e8fd78f4da3585aa2e91863306e77b491/src/js/dashboard.js#L144
 window.addEventListener('beforeunload', () => {
-	event.preventDefault();
-	event.returnValue = '';
+	if(document.getElementById("blocking").style.display === "none") {
+		event.preventDefault();
+		event.returnValue = '';
+	}
 });
 
 document.addEventListener('DOMContentLoaded', function () {
