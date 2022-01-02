@@ -55,6 +55,6 @@ The files in the folder `icons` are also under CC0, since it is just the origina
 - [ ] Clean up the code
 	- [ ] Use better names for files
 	- [ ] Use simpler logic if possible
-- [ ] Branding: create an icon, description
+- [x] Branding: create an icon, description
 - [x] Privacy: tell users why the extension needs certain permissions
 - [x] Show users which websites they block on `setrules.html`
