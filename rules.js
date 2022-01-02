@@ -97,7 +97,7 @@ function startBlocking() {
 				"priority": 1,
 				"action": { "type": "redirect", "redirect": { "extensionPath": "/blocked.html" } },
 				"condition": {
-					"urlFilter": r,
+					"urlFilter": "||" + r,
 					"resourceTypes": [
 						"main_frame",
 						"sub_frame",
