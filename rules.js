@@ -66,7 +66,8 @@ function startBlocking() {
 	var hours = Number(endTime[0] + endTime[1]);
 	var minutes = Number(endTime[3] + endTime[4]);
 	var today = new Date();
-	var diff = today.setHours(hours, minutes) - Date.now();
+	var end = today.setHours(hours, minutes);
+	var diff = end - Date.now();
 	if(diff < 0) {
 		alert("Invalid time! It is in the past!");
 		return false;
@@ -136,9 +137,9 @@ function startBlocking() {
 	document.getElementById("notBlocking").style = "display: none;";
 	document.getElementById("blockTime").innerText = "You are blocking until " + endTime + " (24 hour time)";
 
-	diff = today.setHours(hours, minutes) - Date.now();
+	diff = end - Date.now();
 	if(diff > 0) {
-		chrome.alarms.create({"when": diff});
+		chrome.alarms.create({"when": end});
 	} else {
 		chrome.storage.sync.set({blocking: false});
 		document.getElementById("blocking").style = "display: none;";
