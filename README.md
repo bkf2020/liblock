@@ -10,7 +10,7 @@ libre website blocker to help you stay focused. set times you want to prevent ac
 # getting started
 1. install the extension (see `INSTALL.md` for more details).
 2. right click on the extension to open the options page
-	a. or click on the extension icon, and press the button to open the options page
+	- or click on the extension icon, and press the button to open the options page
 3. set your rules by following the instructions on the options page
 4. set a time to start blocking (scroll down on the options page)
 5. press "start blocking" to start blocking!
