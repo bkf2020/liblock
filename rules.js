@@ -62,6 +62,16 @@ function addRule() {
 }
 
 function startBlocking() {
+	var endTime = document.getElementById('rules-time').value;
+	var hours = Number(endTime[0] + endTime[1]);
+	var minutes = Number(endTime[3] + endTime[4]);
+	var today = new Date();
+	var diff = today.setHours(hours, minutes) - Date.now();
+	if(diff < 0) {
+		alert("Invalid time! It is in the past!");
+		return false;
+	}
+
 	// temp
 	var rules_id = [];
 	for(var i = 1; i <= 10000; i++) {
@@ -121,8 +131,20 @@ function startBlocking() {
 	}
 
 	chrome.storage.sync.set({blocking: true});
+	chrome.storage.sync.set({time: endTime});
 	document.getElementById("blocking").style = "";
 	document.getElementById("notBlocking").style = "display: none;";
+	document.getElementById("blockTime").innerText = "You are blocking until " + endTime + " (24 hour time)";
+
+	diff = today.setHours(hours, minutes) - Date.now();
+	if(diff > 0) {
+		chrome.alarms.create({"when": diff});
+	} else {
+		chrome.storage.sync.set({blocking: false});
+		document.getElementById("blocking").style = "display: none;";
+		document.getElementById("notBlocking").style = "";
+	}
+	return true;
 }
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -140,4 +162,7 @@ chrome.storage.sync.get(['blocking'], function(result) {
 		document.getElementById("blocking").style = "display: none;";
 		document.getElementById("notBlocking").style = "";
 	}
+});
+chrome.storage.sync.get(['time'], function(result) {
+	document.getElementById("blockTime").innerText = "You are blocking until " + result.time + " (24 hour time)";
 });
