@@ -5,7 +5,8 @@
 		"declarativeNetRequest",
 		"tabs",
 		"storage",
-		"alarms"
+		"alarms",
+		"notifications"
 	],
 	"host_permissions": [
 		"*://*/*"

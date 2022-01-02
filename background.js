@@ -16,4 +16,11 @@ chrome.alarms.onAlarm.addListener(function() {
 		chrome.declarativeNetRequest.updateDynamicRules({"removeRuleIds": rules_id});
 		return true;
 	});
+	// notification that the block session is over
+	chrome.notifications.create({
+		"iconUrl": "/icon.jpg",
+		"message": "liblock has finished blocking websites! If you want, start a new blocking session.",
+		"title": "liblock",
+		"type": "basic"
+	});
 });
