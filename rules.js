@@ -154,14 +154,7 @@ function startBlocking() {
 	document.getElementById("blockTime").innerText = "You are blocking until " + endTime + " (24 hour time)";
 	displayWebsitesBlocked();
 
-	diff = end - Date.now();
-	if(diff > 0) {
-		chrome.alarms.create({"when": end});
-	} else {
-		chrome.storage.sync.set({blocking: false});
-		document.getElementById("blocking").style = "display: none;";
-		document.getElementById("notBlocking").style = "";
-	}
+	chrome.alarms.create({"when": end});
 	return true;
 }
 
