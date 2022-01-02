@@ -61,6 +61,20 @@ function addRule() {
 	document.getElementById('new-rule').value = "";
 }
 
+function displayWebsitesBlocked() {
+	var userRulesList = document.getElementById("blockedWebsites");
+	while(userRulesList.firstChild) {
+		userRulesList.removeChild(userRulesList.firstChild);
+	}
+	for(var i = 0; i < rules.length; i++) {
+		if(rules[i] !== "") {
+			var item = document.createElement("li");
+			item.innerText = rules[i];
+			userRulesList.appendChild(item);
+		}
+	}
+}
+
 function startBlocking() {
 	var endTime = document.getElementById('rules-time').value;
 	var hours = Number(endTime[0] + endTime[1]);
@@ -138,6 +152,7 @@ function startBlocking() {
 	document.getElementById("blocking").style = "";
 	document.getElementById("notBlocking").style = "display: none;";
 	document.getElementById("blockTime").innerText = "You are blocking until " + endTime + " (24 hour time)";
+	displayWebsitesBlocked();
 
 	diff = end - Date.now();
 	if(diff > 0) {
@@ -177,9 +192,11 @@ chrome.storage.sync.get(['blocking'], function(result) {
 		document.getElementById("notBlocking").style = "";
 	}
 });
+
 chrome.storage.sync.get(['time'], function(result) {
 	document.getElementById("blockTime").innerText = "You are blocking until " + result.time + " (24 hour time)";
 });
+
 chrome.storage.sync.get(['userRules'], function(result) {
 	if(result.userRules === undefined) return false;
 	var rulesDiv = document.getElementById("rules");
@@ -233,5 +250,6 @@ chrome.storage.sync.get(['userRules'], function(result) {
 	document.getElementById('rules').appendChild(nextRuleText);
 	document.getElementById('rules').appendChild(nextRuleButton);
 	document.getElementById('rules').appendChild(nextRuleBr);
+	displayWebsitesBlocked();
 	return true;
 });
