@@ -115,7 +115,7 @@ function startBlocking() {
 		chrome.tabs.query({"url" : rules_url_pattern}).then(function(result) {
 			for(var i = 0; i < result.length; i++) {
 				var tab = result[i];
-				chrome.tabs.remove(tab.id);
+				chrome.tabs.update(tab.id, {"url": "/blocked.html"});
 			}
 		});
 	}
