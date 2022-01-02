@@ -38,3 +38,6 @@ a:active {
   	color: gold;
   	text-decoration: underline;
 }
+code {
+	color: limegreen;
+}

@@ -36,15 +36,30 @@
 			<input type="text" id="new-rule" name="new-rule" value="">
 			<button id="add-rule">Add the new rule!</button>
 			<br/>
+
+			<h3>How rule blocking works</h3>
 			<p>
 				<b>Note:</b> Please type rules in the format
 				<code>website.com</code>. Do NOT include <code>www</code>
-				or <code>/</code>!
+				or <code>/</code> at the end!
 			</p>
 			<p>Examples:</p>
-				<ul>
-				<li>type <code>youtube.com</code> not <code>www.youtube.com</code></li>
-				<li>type <code>google.com</code> not <code>https://www.google.com/</code></li>
+			<ul>
+				<li>
+					Typing <code>example.com</code> WILL block
+					<code>example.com</code> AND <code>a.example.com</code>
+					AND <code>example.com/test</code>
+				</li>
+				<li>
+					Typing <code>a.example.com</code> WILL block
+					<code>a.example.com</code> but NOT <code>example.com</code>.
+					It WILL block <code>b.a.example.com</code>
+				</li>
+				<li>
+					Typing <code>example.com/test</code> WILL block
+					<code>example.com/test</code> AND <code>example.com/test/test</code>
+					AND <code>a.example.com/test</code> BUT NOT <code>example.com</code>.
+				</li>
 			</ul>
 
 			<h2>Save rules</h2>
