@@ -131,8 +131,17 @@ function startBlocking() {
 		});
 	}
 
+	var rules_not_empty = [];
+	for(var i = 0; i < rules.length; i++) {
+		var r = rules[i];
+		if(r !== "") {
+			rules_not_empty.push(r);
+		}
+	}
+
 	chrome.storage.sync.set({blocking: true});
 	chrome.storage.sync.set({time: endTime});
+	chrome.storage.sync.set({userRules: rules_not_empty});
 	document.getElementById("blocking").style = "";
 	document.getElementById("notBlocking").style = "display: none;";
 	document.getElementById("blockTime").innerText = "You are blocking until " + endTime + " (24 hour time)";
@@ -166,4 +175,59 @@ chrome.storage.sync.get(['blocking'], function(result) {
 });
 chrome.storage.sync.get(['time'], function(result) {
 	document.getElementById("blockTime").innerText = "You are blocking until " + result.time + " (24 hour time)";
+});
+chrome.storage.sync.get(['userRules'], function(result) {
+	if(result.userRules === undefined) return false;
+	var rulesDiv = document.getElementById("rules");
+	while(rulesDiv.firstChild) {
+		rulesDiv.removeChild(rulesDiv.firstChild);
+	}
+
+	// add rules the user has
+	ptr = 0;
+	rules = [];
+	for(var i = 0; i < result.userRules.length; i++) {
+		rules.push(result.userRules[i]);
+		var currentRuleText = document.createElement("label");
+		currentRuleText.id = 'rule' + i.toString() + 'text';
+
+		currentRuleText.innerText = result.userRules[i] + " ";
+		currentRuleText.style = "";
+
+		var currentRuleButton = document.createElement("button");
+		currentRuleButton.id = 'rule' + i.toString() + 'btn';
+		currentRuleButton.innerText = "Delete Rule";
+		currentRuleButton.style = "";
+
+		// these two lines are based off https://stackoverflow.com/a/11986895, by Zaloz
+		// license if CC BY SA 4.0, so it can be GPL licensed
+		currentRuleButton.addEventListener('click', deleteRule, false);
+		currentRuleButton.ptr = i;
+
+		var currentRuleBr = document.createElement("br");
+		currentRuleBr.id = 'rule' + i.toString() + 'br';
+
+		document.getElementById('rules').appendChild(currentRuleText);
+		document.getElementById('rules').appendChild(currentRuleButton);
+		document.getElementById('rules').appendChild(currentRuleBr);
+		ptr++;
+	}
+
+	// add invisible label, button and br
+	var nextRuleText = document.createElement("label");
+	nextRuleText.id = 'rule' + ptr.toString() + 'text';
+	nextRuleText.style = "display: none;";
+
+	var nextRuleButton = document.createElement("button");
+	nextRuleButton.id = 'rule' + ptr.toString() + 'btn';
+	nextRuleButton.innerText = "Delete Rule";
+	nextRuleButton.style = "display: none;";
+
+	var nextRuleBr = document.createElement("br");
+	nextRuleBr.id = 'rule' + ptr.toString() + 'br';
+
+	document.getElementById('rules').appendChild(nextRuleText);
+	document.getElementById('rules').appendChild(nextRuleButton);
+	document.getElementById('rules').appendChild(nextRuleBr);
+	return true;
 });
