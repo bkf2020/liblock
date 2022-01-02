@@ -17,5 +17,8 @@
 		"page": "setrules.html",
 		"open_in_tab": true
 	},
+	"background": {
+		"service_worker": "background.js"
+	},
 	"manifest_version": 3
 }
