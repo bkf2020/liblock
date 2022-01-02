@@ -165,14 +165,24 @@ function startBlocking() {
 	return true;
 }
 
+function saveRules() {
+	var rules_not_empty = [];
+	for(var i = 0; i < rules.length; i++) {
+		var r = rules[i];
+		if(r !== "") {
+			rules_not_empty.push(r);
+		}
+	}
+	chrome.storage.sync.set({userRules: rules_not_empty});
+}
+
 // make sure user wants to close out of setrules.html because changes WILL NOT BE SAVED unless a block session
 // is finished
 // https://developer.mozilla.org/en-US/docs/Web/API/Window/beforeunload_event
 // https://github.com/gorhill/uBlock/blob/5bea149e8fd78f4da3585aa2e91863306e77b491/src/js/dashboard.js#L144
 window.addEventListener('beforeunload', () => {
 	if(document.getElementById("blocking").style.display === "none") {
-		event.preventDefault();
-		event.returnValue = '';
+		saveRules();
 	}
 });
 
@@ -181,6 +191,8 @@ document.addEventListener('DOMContentLoaded', function () {
 		.addEventListener('click', addRule);
 	document.getElementById('start-blocking')
 		.addEventListener('click', startBlocking);
+	document.getElementById('save-rules')
+		.addEventListener('click', saveRules);
 });
 
 chrome.storage.sync.get(['blocking'], function(result) {
