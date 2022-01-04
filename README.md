@@ -17,7 +17,7 @@ libre website blocker to help you stay focused. set times you want to prevent ac
 
 # privacy
 This extension DOES NOT collect ANY user data. This extension needs to "read your browsing history"
-because it when you start blocking, it scans your tabs and makes sure any tabs with blocked websites
+because when you start blocking, it scans your tabs and makes sure any tabs with blocked websites
 are blocked. The extension prevents you from opening a website by using the declaractiveNetRequest
 ( https://developer.chrome.com/docs/extensions/reference/declarativeNetRequest/ ) API, but this API
 cannot block websites you have already opened!
